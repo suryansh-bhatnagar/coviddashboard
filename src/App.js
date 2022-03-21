@@ -31,7 +31,7 @@ function App() {
     setCountry(e.target.value);
     const d = new Date();
     const to = formatDate(d);
-    const from = formatDate(new Date(Date.now() - days * 24 * 3600 * 1000));
+    const from =  days==='1'? '2020-03-01': formatDate(new Date(Date.now() - days * 24 * 3600 * 1000));
     console.log(from, to);
     getCoronaReportByDateRange(e.target.value, from, to);
   };
@@ -41,7 +41,7 @@ function App() {
     const d = new Date();
     const to = formatDate(d);
     // const from = formatDate(d.setDate(d.getDate() - 7));
-    const from = formatDate(new Date(Date.now() - e.target.value* 24 * 3600 * 1000
+    const from = e.target.value==='1'? '2020-03-01':formatDate(new Date(Date.now() - e.target.value* 24 * 3600 * 1000
     ));
     console.log(from,to);
     
@@ -130,6 +130,7 @@ function App() {
               <option value="7">Last 7 days</option>
               <option value="30">Last 30 days</option>
               <option value="90">Last 90 days</option>
+              <option value="1">From starting</option>
             </select>
           </div>
           <LineGraph
